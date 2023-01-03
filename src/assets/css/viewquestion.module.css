@@ -1,0 +1,168 @@
+.view_question {
+  padding: 24px;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+}
+
+.view_question button {
+  margin-top: 15px;
+}
+
+.view_question_container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.view_top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.view_top > h2 {
+  cursor: pointer;
+}
+
+.view_top > button:hover {
+  background-color: #0074cc;
+}
+
+.view_desc {
+  display: flex;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #737395;
+}
+
+.info {
+  display: flex;
+}
+
+.info > p {
+  margin-right: 10px;
+  color: #737395;
+}
+
+.info > p > span {
+  color: #000;
+}
+
+.all_questions {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #737395;
+  display: flex;
+  flex-direction: column;
+}
+
+.all_questions_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.all_options {
+  color: #737395;
+}
+
+.icon {
+  margin-bottom: 10px;
+}
+
+.icon:hover {
+  color: #0074cc;
+}
+
+.view {
+  margin-bottom: 0;
+  font-size: 24px;
+}
+
+.question_answer {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.answer_manipulation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+}
+
+.action > p {
+  margin-right: 5px;
+  color: #737395;
+  cursor: pointer;
+}
+
+.action > p:hover {
+  color: rgb(198, 194, 194);
+}
+
+.author {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.author small {
+  margin-bottom: 5px;
+}
+
+.author_detail {
+  cursor: pointer;
+}
+
+.comment {
+  border-bottom: 1px solid #737395;
+  margin-bottom: 10px;
+}
+
+.comment span {
+  padding: 5px;
+  background-color: #d9eaf7;
+  color: #0074cc;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
+.comment span:hover {
+  color: #3e98dd;
+}
+
+.comment small {
+  color: #737395;
+  cursor: pointer;
+}
+
+.btn-add {
+  color: #737395;
+  cursor: pointer;
+}
+
+.btn-add:hover {
+  color: #0074cc;
+}
+
+.title textarea {
+  width: 100%;
+  border: 1px solid #737395;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.title textarea:focus {
+  outline: 1px solid #636396;
+}
+
+.answer {
+  height: 40%;
+}
+
+.ql-container {
+  height: 200px !important;
+}

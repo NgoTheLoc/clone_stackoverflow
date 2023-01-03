@@ -2,7 +2,7 @@ import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import InboxIcon from "@mui/icons-material/Inbox";
 import { Avatar } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const listNav = [
   {
@@ -24,10 +24,12 @@ const Header = () => {
     <header>
       <div className="header_container">
         <div className="header_left">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Stack_Overflow_logo.svg/220px-Stack_Overflow_logo.svg.png"
-            alt="logo"
-          />
+          <Link to="">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Stack_Overflow_logo.svg/220px-Stack_Overflow_logo.svg.png"
+              alt="logo"
+            />
+          </Link>
 
           {listNav.map((item) => (
             <NavLink to="" key={item.index}>
