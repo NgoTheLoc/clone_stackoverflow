@@ -29,7 +29,7 @@ const Main = () => {
         <div className="main_top">
           <h2>All Questions</h2>
           <Link to="add-question">
-            <button>Ask Question</button>
+            <button className="btn">Ask Question</button>
           </Link>
         </div>
 

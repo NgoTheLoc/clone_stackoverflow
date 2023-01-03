@@ -16,7 +16,7 @@ const Auth = () => {
         <Link>
           <svg
             aria-hidden="true"
-            class="native svg-icon iconLogoGlyphMd"
+            className="native svg-icon iconLogoGlyphMd"
             width="32"
             height="37"
             viewBox="0 0 32 37"
@@ -33,7 +33,7 @@ const Auth = () => {
           <div className="single_option">
             <svg
               aria-hidden="true"
-              class="native svg-icon iconGoogle"
+              className="native svg-icon iconGoogle"
               width="18"
               height="18"
               viewBox="0 0 18 18"
@@ -60,7 +60,7 @@ const Auth = () => {
           <div className="single_option">
             <svg
               aria-hidden="true"
-              class="svg-icon iconGitHub"
+              className="svg-icon iconGitHub"
               width="18"
               height="18"
               viewBox="0 0 18 18"
@@ -75,7 +75,7 @@ const Auth = () => {
           <div className="single_option">
             <svg
               aria-hidden="true"
-              class="svg-icon iconFacebook"
+              className="svg-icon iconFacebook"
               width="18"
               height="18"
               viewBox="0 0 18 18"
@@ -130,7 +130,9 @@ const Auth = () => {
                           <div id="feedback">{props.errors.password}</div>
                         )}
                       </div>
-                      <button type="submit">Log in</button>
+                      <button type="submit" className="btn">
+                        Log in
+                      </button>
                     </form>
                   )}
                 </Formik>
@@ -188,7 +190,9 @@ const Auth = () => {
                           <div id="feedback">{props.errors.password}</div>
                         )}
                       </div>
-                      <button type="submit">Sign up</button>
+                      <button type="submit" className="btn">
+                        Sign up
+                      </button>
                     </form>
                   )}
                 </Formik>

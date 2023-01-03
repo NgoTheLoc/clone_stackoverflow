@@ -20,7 +20,7 @@ const ViewQuestion = () => {
         <div className="view_top">
           <h2>This is a question title</h2>
           <Link to="/add-question">
-            <button>Ask Question</button>
+            <button className="btn">Ask Question</button>
           </Link>
         </div>
 
@@ -86,7 +86,7 @@ const ViewQuestion = () => {
                       rows="10"
                       placeholder="Add your comment"
                     ></textarea>
-                    <button>Add acomment</button>
+                    <button className="btn">Add acomment</button>
                   </div>
                 )}
               </div>
@@ -145,7 +145,7 @@ const ViewQuestion = () => {
                       rows="10"
                       placeholder="Add your comment"
                     ></textarea>
-                    <button>Add acomment</button>
+                    <button className="btn">Add acomment</button>
                   </div>
                 )}
               </div>
@@ -156,12 +156,9 @@ const ViewQuestion = () => {
 
       <div className="answer">
         <h3>Your answer</h3>
-        <ReactQuill
-          className="react-quill"
-          theme="snow"
-        />
+        <ReactQuill className="react-quill" theme="snow" />
 
-        <button>Post Your answer</button>
+        <button className="btn">Post Your answer</button>
       </div>
     </div>
   );

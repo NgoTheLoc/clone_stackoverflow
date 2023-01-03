@@ -1,3 +1,13 @@
+@import "./assets/css/header.module.css";
+@import "./assets/css/sidebar.module.css";
+@import "./assets/css/stackoverflow.module.css";
+@import "./assets/css/main.module.css";
+@import "./assets/css/allquestions.module.css";
+@import "./assets/css/footer.module.css";
+@import "./assets/css/addquestions.module.css";
+@import "./assets/css/viewquestion.module.css";
+@import "./assets/css/auth.module.css";
+
 * {
   padding: 0;
   margin: 0;
@@ -17,12 +27,18 @@ code {
     monospace;
 }
 
-@import "./assets/css/header.module.css";
-@import "./assets/css/sidebar.module.css";
-@import "./assets/css/stackoverflow.module.css";
-@import "./assets/css/main.module.css";
-@import "./assets/css/allquestions.module.css";
-@import "./assets/css/footer.module.css";
-@import "./assets/css/addquestions.module.css";
-@import "./assets/css/viewquestion.module.css";
-@import "./assets/css/auth.module.css";
+.btn {
+  color: #fff;
+  background-color: #0095ff;
+  transition: all 0.1s ease-in-out;
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 0.8rem;
+}
+
+.btn:hover {
+  background-color: #0074cc;
+  color: #fff;
+}

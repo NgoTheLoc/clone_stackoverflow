@@ -6,6 +6,8 @@
 
 .stack_index_content {
   display: flex;
+  justify-content: space-between;
+  max-width: 1264px;
   width: 100%;
-  /* justify-content: center; */
+  margin: 0 auto;
 }

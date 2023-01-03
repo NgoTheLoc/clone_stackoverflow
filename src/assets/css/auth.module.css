@@ -96,7 +96,6 @@
 .auth_container button {
   display: block;
   width: 100%;
-  padding: 5px;
 }
 
 .auth_link {
@@ -110,6 +109,6 @@
   cursor: pointer;
 }
 
-.auth_link span:hover{
-    color: #097bd2;
+.auth_link span:hover {
+  color: #097bd2;
 }

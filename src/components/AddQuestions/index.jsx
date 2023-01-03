@@ -42,7 +42,7 @@ const AddQuestions = () => {
           </div>
         </div>
 
-        <button className="button">Add your question</button>
+        <button className="btn">Add your question</button>
       </div>
     </div>
   );

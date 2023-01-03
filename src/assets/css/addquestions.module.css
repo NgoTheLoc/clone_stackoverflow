@@ -48,11 +48,3 @@
 .question_option input:focus {
   outline: 1px solid #757b81;
 }
-
-.button {
-  width: 25%;
-}
-
-.button:hover {
-  background-color: #022772d8;
-}

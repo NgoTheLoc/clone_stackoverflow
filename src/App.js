@@ -1,10 +1,9 @@
-import "./App.css";
+import { Routes, Route } from "react-router-dom";
+
 import Header from "./components/Header";
 import StackOverflow from "./components/StackOverflow";
-import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import AddQuestions from "./components/AddQuestions";
-import Main from "./components/Main";
 import MainQuestion from "./components/ViewQuestion/MainQuestion";
 import Auth from "./components/Auth";
 
