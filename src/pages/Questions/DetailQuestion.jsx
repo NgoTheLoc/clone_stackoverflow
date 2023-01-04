@@ -21,7 +21,7 @@ const DetailQuestion = () => {
       <div className="view_question_container">
         <div className="view_top">
           <h2>This is a question title</h2>
-          <button className="btn" onClick={() => navigate("/question/ask")}>
+          <button className="btn btn-medium btn-primary" onClick={() => navigate("/question/ask")}>
             Ask Question
           </button>
         </div>
@@ -88,7 +88,7 @@ const DetailQuestion = () => {
                       rows="10"
                       placeholder="Add your comment"
                     ></textarea>
-                    <button className="btn">Add acomment</button>
+                    <button className="btn btn-medium btn-primary">Add acomment</button>
                   </div>
                 )}
               </div>
@@ -147,7 +147,7 @@ const DetailQuestion = () => {
                       rows="10"
                       placeholder="Add your comment"
                     ></textarea>
-                    <button className="btn">Add acomment</button>
+                    <button className="btn btn-medium btn-primary">Add acomment</button>
                   </div>
                 )}
               </div>
@@ -160,7 +160,7 @@ const DetailQuestion = () => {
         <h3>Your answer</h3>
         <ReactQuill className="react-quill" theme="snow" />
 
-        <button className="btn">Post Your answer</button>
+        <button className="btn btn-medium btn-primary">Post Your answer</button>
       </div>
     </div>
   );

@@ -42,7 +42,7 @@ const AskQuestion = () => {
           </div>
         </div>
 
-        <button className="btn">Add your question</button>
+        <button className="btn btn-medium btn-primary">Add your question</button>
       </div>
     </div>
   );

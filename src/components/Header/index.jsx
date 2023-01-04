@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import SearchIcon from "@mui/icons-material/Search";
 import InboxIcon from "@mui/icons-material/Inbox";
@@ -10,6 +10,9 @@ import ViewAgendaIcon from "@mui/icons-material/ViewAgenda";
 import { Avatar } from "@mui/material";
 
 const Header = () => {
+  const [isLog, setIsLog] = useState(false);
+  const navigate = useNavigate();
+
   return (
     <header>
       <div className="header_container">
@@ -31,12 +34,32 @@ const Header = () => {
         </div>
         <div className="header_right">
           <div className="header_right_container">
-            <Avatar className="avatar" />
-            <InboxIcon />
-            <EmojiEventsIcon />
-            <HelpIcon />
-            <AcUnitIcon />
-            <ViewAgendaIcon />
+            {isLog ? (
+              <>
+                <Avatar className="avatar" />
+                <InboxIcon />
+                <EmojiEventsIcon />
+                <HelpIcon />
+                <AcUnitIcon />
+                <ViewAgendaIcon />
+              </>
+            ) : (
+              <>
+                <button
+                  className="btn btn-small btn-secondary"
+                  onClick={() => navigate("/log-in")}
+                  style={{ marginRight: "5px" }}
+                >
+                  Log in
+                </button>
+                <button
+                  className="btn btn-small btn-primary"
+                  onClick={() => navigate("/sign-up")}
+                >
+                  Sign up
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>

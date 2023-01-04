@@ -31,7 +31,7 @@ const AllQuestions = () => {
         <div className="main_top">
           <h2>All Questions</h2>
           <Link to="ask">
-            <button className="btn">Ask Question</button>
+            <button className="btn btn-medium btn-primary">Ask Question</button>
           </Link>
         </div>
 
