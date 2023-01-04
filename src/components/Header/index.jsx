@@ -1,23 +1,12 @@
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import InboxIcon from "@mui/icons-material/Inbox";
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import AcUnitIcon from "@mui/icons-material/AcUnit";
+import HelpIcon from "@mui/icons-material/Help";
+import ViewAgendaIcon from "@mui/icons-material/ViewAgenda";
 import { Avatar } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
-
-const listNav = [
-  {
-    index: 1,
-    title: "About",
-  },
-  {
-    index: 2,
-    title: "Products",
-  },
-  {
-    index: 3,
-    title: "For Teams",
-  },
-];
 
 const Header = () => {
   return (
@@ -31,11 +20,7 @@ const Header = () => {
             />
           </Link>
 
-          {listNav.map((item) => (
-            <NavLink to="" key={item.index}>
-              {item.title}
-            </NavLink>
-          ))}
+          <NavLink to="">Products</NavLink>
         </div>
         <div className="header_middle">
           <div className="header_search_container">
@@ -45,21 +30,12 @@ const Header = () => {
         </div>
         <div className="header_right">
           <div className="header_right_container">
-            <Avatar />
+            <Avatar className="avatar" />
             <InboxIcon />
-            <svg
-              aria-hidden="true"
-              className="svg-icon iconStackExchange"
-              width="24"
-              height="24"
-              viewBox="0 0 18 18"
-              fill="rgba(0,0,0,0.5)"
-              style={{
-                cursor: "pointer",
-              }}
-            >
-              <path d="M15 1H3a2 2 0 00-2 2v2h16V3a2 2 0 00-2-2ZM1 13c0 1.1.9 2 2 2h8v3l3-3h1a2 2 0 002-2v-2H1v2Zm16-7H1v4h16V6Z"></path>
-            </svg>
+            <EmojiEventsIcon />
+            <HelpIcon />
+            <AcUnitIcon />
+            <ViewAgendaIcon />
           </div>
         </div>
       </div>
