@@ -37,7 +37,7 @@ header {
   margin: 0 10px;
   cursor: pointer;
   padding: 5px 10px;
-  transition: all .1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 .header_left > a:hover:not(:first-child) {
@@ -96,7 +96,7 @@ header {
   padding: 0 5px;
   cursor: pointer;
   font-size: 32px;
-  transition: all .1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 .header_right_container > .MuiSvgIcon-root:hover {
@@ -107,6 +107,10 @@ header {
 .avatar {
   margin-right: 10px;
   cursor: pointer;
+}
+
+.header_right_container > button:first-child {
+  margin-right: 5px;
 }
 
 @media screen and (max-width: 768px) {

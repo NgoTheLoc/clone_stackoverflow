@@ -48,7 +48,6 @@ const Header = () => {
                 <button
                   className="btn btn-small btn-secondary"
                   onClick={() => navigate("/log-in")}
-                  style={{ marginRight: "5px" }}
                 >
                   Log in
                 </button>

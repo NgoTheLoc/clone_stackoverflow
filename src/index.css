@@ -63,5 +63,6 @@ code {
 }
 
 .btn-small {
-  padding: 8px;
+  width: 80px;
+  /* padding: 8px; */
 }
