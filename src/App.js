@@ -1,24 +1,25 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route ,Navigate} from "react-router-dom";
 
-import Header from "./components/Header";
-import StackOverflow from "./components/StackOverflow";
-import Footer from "./components/Footer";
-import AddQuestions from "./components/AddQuestions";
-import MainQuestion from "./components/ViewQuestion/MainQuestion";
-import Auth from "./components/Auth";
+import Login from "./components/Auth/Login";
+import Signup from "./components/Auth/Signup";
+
+import Questions from "./pages/Questions";
+import AskQuestion from "./pages/Questions/AskQuestion";
+import DetailQuestion from "./pages/Questions/DetailQuestion";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
+    <>
       <Routes>
-        <Route path="/" element={<StackOverflow />}></Route>
-        <Route path="/add-question" element={<AddQuestions />}></Route>
-        <Route path="/question" element={<MainQuestion />}></Route>
-        <Route path="/auth" element={<Auth />}></Route>
+        <Route exact path="/" element={<Navigate to="/question" />} />
+        <Route exact path="/question" element={<Questions />}>
+          <Route path=":id" element={<DetailQuestion />} />
+          <Route path="ask" element={<AskQuestion />} />
+        </Route>
+        <Route exact path="/log-in" element={<Login />}></Route>
+        <Route exact path="/sign-up" element={<Signup />}></Route>
       </Routes>
-      <Footer />
-    </div>
+    </>
   );
 }
 

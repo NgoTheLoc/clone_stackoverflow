@@ -112,3 +112,8 @@
 .auth_link span:hover {
   color: #097bd2;
 }
+
+.error_message {
+  color: red;
+  font-weight: 600;
+}

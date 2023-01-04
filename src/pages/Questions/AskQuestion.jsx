@@ -3,7 +3,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { TagsInput } from "react-tag-input-component";
 
-const AddQuestions = () => {
+const AskQuestion = () => {
   return (
     <div className="add_question">
       <div className="add_question_container">
@@ -48,4 +48,4 @@ const AddQuestions = () => {
   );
 };
 
-export default AddQuestions;
+export default AskQuestion;
