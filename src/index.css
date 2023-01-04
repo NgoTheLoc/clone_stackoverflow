@@ -1,12 +1,14 @@
-@import "./assets/css/header.module.css";
-@import "./assets/css/sidebar.module.css";
-@import "./assets/css/stackoverflow.module.css";
-@import "./assets/css/main.module.css";
-@import "./assets/css/allquestions.module.css";
-@import "./assets/css/footer.module.css";
-@import "./assets/css/addquestions.module.css";
-@import "./assets/css/viewquestion.module.css";
-@import "./assets/css/auth.module.css";
+@import "./assets/css/components/Header/header.module.css";
+@import "./assets/css/components/Sidebar/sidebar.module.css";
+@import "./assets/css/components/Footer/footer.module.css";
+@import "./assets/css/components/Auth/auth.module.css";
+
+/* Module CSS Questions */
+@import "./assets/css/pages/Questions/index.module.css";
+@import "./assets/css/pages/Questions/question.module.css";
+@import "./assets/css/pages/Questions/detailquestion.module.css";
+@import "./assets/css/pages/Questions/askquestion.module.css";
+@import "./assets/css/pages/Questions/allquestions.module.css";
 
 * {
   padding: 0;

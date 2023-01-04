@@ -1,7 +1,9 @@
-import { Form, Formik } from "formik";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
+import { Form, Formik } from "formik";
 import * as Yup from "yup";
+
 import Header from "../Header";
 
 const Signup = () => {
@@ -27,7 +29,7 @@ const Signup = () => {
       <Header />
       <div className="auth">
         <div className="auth_container">
-          <Link>
+          <Link to="/">
             <svg
               aria-hidden="true"
               className="native svg-icon iconLogoGlyphMd"
