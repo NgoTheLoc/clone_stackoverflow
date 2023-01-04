@@ -144,7 +144,7 @@ const Login = () => {
                         </div>
                       )}
                     </div>
-                    <button type="submit" className="btn">
+                    <button type="submit" className="btn btn-primary btn-medium">
                       Log in
                     </button>
                   </Form>

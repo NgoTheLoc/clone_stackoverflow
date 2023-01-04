@@ -166,7 +166,7 @@ const Signup = () => {
                         </div>
                       )}
                     </div>
-                    <button type="submit" className="btn">
+                    <button type="submit" className="btn btn-primary btn-medium">
                       Sign up
                     </button>
                   </Form>
