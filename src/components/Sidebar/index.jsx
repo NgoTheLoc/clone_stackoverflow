@@ -1,6 +1,7 @@
-import { Public, Stars } from "@mui/icons-material";
 import React from "react";
 import { NavLink } from "react-router-dom";
+
+import { Public, Stars } from "@mui/icons-material";
 
 const Sidebar = () => {
   return (
