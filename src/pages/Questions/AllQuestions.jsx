@@ -1,7 +1,7 @@
 import { FilterList } from "@mui/icons-material";
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import AllQuestions from "../AllQuestions";
+import Question from "./Question";
 
 const listFilter = [
   {
@@ -22,13 +22,13 @@ const listFilter = [
   },
 ];
 
-const Main = () => {
+const AllQuestions = () => {
   return (
     <div className="main">
       <div className="main_container">
         <div className="main_top">
           <h2>All Questions</h2>
-          <Link to="add-question">
+          <Link to="ask">
             <button className="btn">Ask Question</button>
           </Link>
         </div>
@@ -54,10 +54,10 @@ const Main = () => {
 
         <div className="main_questions">
           <div className="question">
-            <AllQuestions />
-            <AllQuestions />
-            <AllQuestions />
-            <AllQuestions />
+            <Question />
+            <Question />
+            <Question />
+            <Question />
           </div>
         </div>
       </div>
@@ -65,4 +65,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default AllQuestions;

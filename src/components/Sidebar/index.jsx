@@ -17,7 +17,7 @@ const Sidebar = () => {
             <div className="link">
               <div className="link_tag">
                 <Public />
-                <NavLink to="">Question</NavLink>
+                <NavLink to="/">Question</NavLink>
               </div>
               <div className="link_tag">
                 <NavLink to="">Tags</NavLink>

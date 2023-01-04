@@ -1,27 +1,27 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import HistoryIcon from "@mui/icons-material/History";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
-import CheckIcon from "@mui/icons-material/Check";
-import EditIcon from "@mui/icons-material/Edit";
 import { Avatar } from "@mui/material";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-const ViewQuestion = () => {
+const DetailQuestion = () => {
   const [isComment, setIsComment] = useState(false);
   const [isFollowing, setIsFollowing] = useState(false);
+
+  const navigate = useNavigate();
 
   return (
     <div className="view_question">
       <div className="view_question_container">
         <div className="view_top">
           <h2>This is a question title</h2>
-          <Link to="/add-question">
-            <button className="btn">Ask Question</button>
-          </Link>
+          <button className="btn" onClick={() => navigate("/question/ask")}>
+            Ask Question
+          </button>
         </div>
 
         <div className="view_desc">
@@ -164,4 +164,4 @@ const ViewQuestion = () => {
   );
 };
 
-export default ViewQuestion;
+export default DetailQuestion;

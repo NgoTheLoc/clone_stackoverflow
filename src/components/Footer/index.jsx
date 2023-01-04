@@ -146,7 +146,7 @@ const Footer = () => {
     <div className="footer">
       <div className="footer_container">
         <div className="footer_container_left">
-          <Link>
+          <Link to="/">
             <svg
               aria-hidden="true"
               className="native svg-icon iconLogoGlyphMd"

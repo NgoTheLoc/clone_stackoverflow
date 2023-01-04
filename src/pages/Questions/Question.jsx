@@ -2,7 +2,7 @@ import { Avatar } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const AllQuestions = () => {
+const Question = () => {
   return (
     <div className="all_questions">
       <div className="all_questions_container">
@@ -23,7 +23,7 @@ const AllQuestions = () => {
           </div>
 
           <div className="question_answer">
-            <Link to="question">this question title</Link>
+            <Link to=":123">this question title</Link>
             <div style={{ marginBottom: "15px" }}>
               I have a personal server connected to my local network, and
               recently wanted to set up an SFTP-Server on it for some media
@@ -53,4 +53,4 @@ const AllQuestions = () => {
   );
 };
 
-export default AllQuestions;
+export default Question;
