@@ -46,19 +46,19 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (values, setValues) => {
+  const handleSubmit = (values) => {
     if (values) {
       signInWithEmailAndPassword(auth, values.email, values.password)
         .then((res) => {
           console.log(res);
+          navigate("/question");
+          success("Login successfully");
         })
-        .catch((error) => {
-          console.log(error);
+        .catch((err) => {
+          console.log(err);
+          error("Login failed");
         });
-      if (user) navigate("/question");
-      success("Login successfully");
     } else {
-      error("Login failed");
     }
   };
 
@@ -149,7 +149,7 @@ const Login = () => {
                 initialValues={initialValue}
                 validationSchema={validationSchema}
                 onSubmit={(values, actions) => {
-                  handleSubmit(values, actions.setValues);
+                  handleSubmit(values);
                   actions.setSubmitting(false);
                 }}
               >

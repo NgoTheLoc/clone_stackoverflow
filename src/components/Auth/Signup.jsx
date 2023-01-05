@@ -4,14 +4,16 @@ import { ToastContainer } from "react-toastify";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 
-import { signInWithPopup } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../services/firebase";
 import { error, success } from "../../model/notify";
 
 import Header from "../Header";
+import { useSelector } from "react-redux";
 
 const Signup = () => {
   const navigate = useNavigate();
+  const user = useSelector((state) => state.value);
 
   const [initialValue, setInitialValue] = useState({
     username: "",
@@ -49,10 +51,17 @@ const Signup = () => {
 
   const handleSubmit = (values) => {
     if (values) {
-      console.log("🚀 ~ handleSubmit ~ values", values);
-      success("Sign up successfully");
+      signInWithEmailAndPassword(auth, values.email, values.password)
+        .then((res) => {
+          console.log(res);
+          navigate("/log-in");
+          success("Sign-up successfully");
+        })
+        .catch((err) => {
+          error("Sign-up failed");
+          console.log(err);
+        });
     } else {
-      error("Sign up failed");
     }
   };
 
