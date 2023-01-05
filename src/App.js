@@ -32,7 +32,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter> 
       <Routes>
         <Route exact path="/" element={<Navigate to="/question" />} />
         <Route exact path="/question" element={<Questions />}>
