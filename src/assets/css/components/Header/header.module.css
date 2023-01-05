@@ -2,7 +2,7 @@ header {
   display: flex;
   position: sticky;
   top: 0;
-  z-index: 10000;
+  z-index: 999;
   min-height: 5vh;
   box-shadow: 0 0.5px 8px rgba(0, 0, 0, 0.178);
   background-color: rgba(251, 250, 250);

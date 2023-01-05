@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 
 import Header from "../Header";
 
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { error, success } from "../../model/notify";
+import { auth, provider } from "../../services/firebase";
+import { useSelector } from "react-redux";
+
 const Login = () => {
   const navigate = useNavigate();
+  const user = useSelector((state) => state.value);
 
   const [initialValue, setInitialValue] = useState({
     email: "",
@@ -18,6 +25,42 @@ const Login = () => {
     email: Yup.string().email("Invalid email").required("Required"),
     password: Yup.string().required("Required"),
   });
+
+  /* Log-in with Google, Facebook, Github */
+  const handleLogInGoogle = () => {
+    signInWithPopup(auth, provider).then((res) => {
+      console.log(res);
+      navigate("/question");
+    });
+  };
+
+  const handleLogInGithub = () => {
+    signInWithPopup(auth, provider).then((res) => {
+      console.log(res);
+    });
+  };
+
+  const handleLogInFacebook = () => {
+    signInWithPopup(auth, provider).then((res) => {
+      console.log(res);
+    });
+  };
+
+  const handleSubmit = (values, setValues) => {
+    if (values) {
+      signInWithEmailAndPassword(auth, values.email, values.password)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      if (user) navigate("/question");
+      success("Login successfully");
+    } else {
+      error("Login failed");
+    }
+  };
 
   return (
     <>
@@ -41,7 +84,7 @@ const Login = () => {
           </Link>
 
           <div className="auth_options">
-            <div className="single_option">
+            <div className="single_option" onClick={handleLogInGoogle}>
               <svg
                 aria-hidden="true"
                 className="native svg-icon iconGoogle"
@@ -68,7 +111,7 @@ const Login = () => {
               </svg>
               Log in with Google
             </div>
-            <div className="single_option">
+            <div className="single_option" onClick={handleLogInGithub}>
               <svg
                 aria-hidden="true"
                 className="svg-icon iconGitHub"
@@ -83,7 +126,7 @@ const Login = () => {
               </svg>
               Log in with GitHub
             </div>
-            <div className="single_option">
+            <div className="single_option" onClick={handleLogInFacebook}>
               <svg
                 aria-hidden="true"
                 className="svg-icon iconFacebook"
@@ -106,49 +149,57 @@ const Login = () => {
                 initialValues={initialValue}
                 validationSchema={validationSchema}
                 onSubmit={(values, actions) => {
-                  console.log("🚀 ~ Login ~ values", values);
+                  handleSubmit(values, actions.setValues);
                   actions.setSubmitting(false);
                 }}
               >
-                {(props) => (
-                  <Form>
-                    <div className="input_field">
-                      <label htmlFor="email">Email</label>
-                      <input
-                        type="email"
-                        onChange={props.handleChange}
-                        onBlur={props.handleBlur}
-                        value={props.values.email}
-                        name="email"
-                        id="email"
-                      />
-                      {props.errors.email && (
-                        <div className="error_message">
-                          {props.errors.email}
-                        </div>
-                      )}
-                    </div>
-                    <div className="input_field">
-                      <label htmlFor="password">Password</label>
-                      <input
-                        type="password"
-                        onChange={props.handleChange}
-                        onBlur={props.handleBlur}
-                        value={props.values.password}
-                        name="password"
-                        id="password"
-                      />
-                      {props.errors.password && (
-                        <div className="error_message">
-                          {props.errors.password}
-                        </div>
-                      )}
-                    </div>
-                    <button type="submit" className="btn btn-primary btn-medium">
-                      Log in
-                    </button>
-                  </Form>
-                )}
+                {({
+                  values,
+                  errors,
+                  handleChange,
+                  handleBlur,
+                  isValidating,
+                }) => {
+                  return (
+                    <Form>
+                      <div className="input_field">
+                        <label htmlFor="email">Email</label>
+                        <input
+                          type="email"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.email}
+                          name="email"
+                          id="email"
+                        />
+                        {errors.email && (
+                          <div className="error_message">{errors.email}</div>
+                        )}
+                      </div>
+                      <div className="input_field">
+                        <label htmlFor="password">Password</label>
+                        <input
+                          type="password"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.password}
+                          name="password"
+                          id="password"
+                        />
+                        {errors.password && (
+                          <div className="error_message">{errors.password}</div>
+                        )}
+                      </div>
+                      <button
+                        type="submit"
+                        className="btn btn-primary btn-medium"
+                        disabled={isValidating}
+                      >
+                        Log in
+                      </button>
+                    </Form>
+                  );
+                }}
               </Formik>
             </div>
           </div>
@@ -161,6 +212,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <ToastContainer theme="colored" />
     </>
   );
 };

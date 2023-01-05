@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { ToastContainer } from "react-toastify";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
+
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../../services/firebase";
+import { error, success } from "../../model/notify";
 
 import Header from "../Header";
 
@@ -23,6 +27,34 @@ const Signup = () => {
     email: Yup.string().email("Invalid email").required("Required"),
     password: Yup.string().required("Required"),
   });
+
+  /* Log-in with Google, Facebook, Github */
+  const handleLogInGoogle = () => {
+    signInWithPopup(auth, provider).then((res) => {
+      console.log(res);
+    });
+  };
+
+  const handleLogInGithub = () => {
+    signInWithPopup(auth, provider).then((res) => {
+      console.log(res);
+    });
+  };
+
+  const handleLogInFacebook = () => {
+    signInWithPopup(auth, provider).then((res) => {
+      console.log(res);
+    });
+  };
+
+  const handleSubmit = (values) => {
+    if (values) {
+      console.log("🚀 ~ handleSubmit ~ values", values);
+      success("Sign up successfully");
+    } else {
+      error("Sign up failed");
+    }
+  };
 
   return (
     <>
@@ -46,7 +78,7 @@ const Signup = () => {
           </Link>
 
           <div className="auth_options">
-            <div className="single_option">
+            <div className="single_option" onClick={handleLogInGoogle}>
               <svg
                 aria-hidden="true"
                 className="native svg-icon iconGoogle"
@@ -71,9 +103,9 @@ const Signup = () => {
                   fill="#EA4335"
                 ></path>
               </svg>
-              Sign up with Google
+              Log in with Google
             </div>
-            <div className="single_option">
+            <div className="single_option" onClick={handleLogInGithub}>
               <svg
                 aria-hidden="true"
                 className="svg-icon iconGitHub"
@@ -86,9 +118,9 @@ const Signup = () => {
                   fill="#010101"
                 ></path>
               </svg>
-              Sign up with GitHub
+              Log in with GitHub
             </div>
-            <div className="single_option">
+            <div className="single_option" onClick={handleLogInFacebook}>
               <svg
                 aria-hidden="true"
                 className="svg-icon iconFacebook"
@@ -101,7 +133,7 @@ const Signup = () => {
                   fill="#4167B2"
                 ></path>
               </svg>
-              Sign up with Facebook
+              Log in with Facebook
             </div>
           </div>
 
@@ -111,26 +143,24 @@ const Signup = () => {
                 initialValues={initialValue}
                 validationSchema={validationSchema}
                 onSubmit={(values, actions) => {
-                  console.log("🚀 ~ Signup ~ values", values);
+                  handleSubmit(values);
                   actions.setSubmitting(false);
                 }}
               >
-                {(props) => (
+                {({ values, errors, handleChange, handleBlur }) => (
                   <Form>
                     <div className="input_field">
                       <label htmlFor="username">Display name</label>
                       <input
                         type="text"
-                        onChange={props.handleChange}
-                        onBlur={props.handleBlur}
-                        value={props.values.username}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.username}
                         name="username"
                         id="username"
                       />
-                      {props.errors.username && (
-                        <div className="error_message">
-                          {props.errors.username}
-                        </div>
+                      {errors.username && (
+                        <div className="error_message">{errors.username}</div>
                       )}
                     </div>
 
@@ -138,35 +168,34 @@ const Signup = () => {
                       <label htmlFor="email">Email</label>
                       <input
                         type="email"
-                        onChange={props.handleChange}
-                        onBlur={props.handleBlur}
-                        value={props.values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.email}
                         name="email"
                         id="email"
                       />
-                      {props.errors.email && (
-                        <div className="error_message">
-                          {props.errors.email}
-                        </div>
+                      {errors.email && (
+                        <div className="error_message">{errors.email}</div>
                       )}
                     </div>
                     <div className="input_field">
                       <label htmlFor="password">Password</label>
                       <input
                         type="password"
-                        onChange={props.handleChange}
-                        onBlur={props.handleBlur}
-                        value={props.values.password}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.password}
                         name="password"
                         id="password"
                       />
-                      {props.errors.password && (
-                        <div className="error_message">
-                          {props.errors.password}
-                        </div>
+                      {errors.password && (
+                        <div className="error_message">{errors.password}</div>
                       )}
                     </div>
-                    <button type="submit" className="btn btn-primary btn-medium">
+                    <button
+                      type="submit"
+                      className="btn btn-primary btn-medium"
+                    >
                       Sign up
                     </button>
                   </Form>
@@ -183,6 +212,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
+      <ToastContainer theme="colored" />
     </>
   );
 };

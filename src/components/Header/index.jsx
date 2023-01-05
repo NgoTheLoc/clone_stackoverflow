@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import SearchIcon from "@mui/icons-material/Search";
@@ -8,10 +8,12 @@ import AcUnitIcon from "@mui/icons-material/AcUnit";
 import HelpIcon from "@mui/icons-material/Help";
 import ViewAgendaIcon from "@mui/icons-material/ViewAgenda";
 import { Avatar } from "@mui/material";
+import { useSelector } from "react-redux";
+import { signOut } from "firebase/auth";
 
 const Header = () => {
-  const [isLog, setIsLog] = useState(false);
   const navigate = useNavigate();
+  const user = useSelector((state) => state.user);
 
   return (
     <header>
@@ -34,9 +36,16 @@ const Header = () => {
         </div>
         <div className="header_right">
           <div className="header_right_container">
-            {isLog ? (
+            {user.value ? (
               <>
-                <Avatar className="avatar" />
+                <span
+                  onClick={() => {
+                    signOut();
+                    navigate("/log-in");
+                  }}
+                >
+                  <Avatar alt={user.value.photo} src={user.value.photo} />
+                </span>
                 <InboxIcon />
                 <EmojiEventsIcon />
                 <HelpIcon />
