@@ -15,7 +15,7 @@ import {
 import { error } from "../../model/notify";
 
 import { useDispatch } from "react-redux";
-import { checkLogin, login } from "../../redux/features/user/userSlice";
+import { checkLogin } from "../../redux/features/user/userSlice";
 
 import Header from "../Header";
 
@@ -43,6 +43,7 @@ const Signup = () => {
     signInWithPopup(auth, provider)
       .then((res) => {
         console.log(res);
+        dispatch(checkLogin(true));
         navigate("/question");
       })
       .catch((error) => {
@@ -54,6 +55,7 @@ const Signup = () => {
     signInWithPopup(auth, providerGithub)
       .then((res) => {
         console.log(res);
+        dispatch(checkLogin(true));
         navigate("/question");
       })
       .catch((error) => {
@@ -65,6 +67,7 @@ const Signup = () => {
     signInWithPopup(auth, providerFacebook)
       .then((res) => {
         console.log(res);
+        dispatch(checkLogin(true));
         navigate("/question");
       })
       .catch((error) => {

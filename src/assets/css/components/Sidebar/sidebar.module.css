@@ -1,6 +1,6 @@
 .sidebar {
   display: flex;
-  padding: 20px 0 10px 20px;
+  /* padding: 20px 0 10px 20px; */
   height: 100%;
   flex: 0.5;
   min-width: 200px;
@@ -28,14 +28,16 @@
   font-size: 14px;
 }
 
-a {
+.sidebar_option a {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.5);
+  padding: 5px 0px 5px 10px;
 }
 
 .sidebar_option > p {
   color: rgba(0, 0, 0, 0.5);
   font-size: 14px;
+  padding: 5px 0px 5px 10px;
 }
 
 .link {
@@ -43,21 +45,21 @@ a {
   flex-direction: column;
 }
 
-.link_tag {
+.link_tag a {
   display: flex;
   align-items: center;
-  padding: 5px 0;
+  
   width: 100%;
 }
 
-.link_tag:hover {
+.link_tag a:hover {
   border-right: 5px solid rgba(245, 162, 9);
   background-color: #f1f2f3;
   color: #000;
   font-weight: 700;
 }
 
-.link_tag > .MuiSvgIcon-root {
+.link_tag .MuiSvgIcon-root {
   font-size: 18px;
   margin-right: 5px;
   color: rgba(245, 162, 9);

@@ -38,6 +38,7 @@ const Login = () => {
     signInWithPopup(auth, provider)
       .then((res) => {
         console.log(res);
+        dispatch(checkLogin(true));
         navigate("/question");
       })
       .catch((error) => {
@@ -49,6 +50,7 @@ const Login = () => {
     signInWithPopup(auth, providerGithub)
       .then((res) => {
         console.log(res);
+        dispatch(checkLogin(true));
         navigate("/question");
       })
       .catch((error) => {
@@ -60,6 +62,7 @@ const Login = () => {
     signInWithPopup(auth, providerFacebook)
       .then((res) => {
         console.log(res);
+        dispatch(checkLogin(true));
         navigate("/question");
       })
       .catch((error) => {

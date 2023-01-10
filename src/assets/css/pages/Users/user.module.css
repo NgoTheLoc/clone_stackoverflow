@@ -1,0 +1,15 @@
+.content_user p,
+h5 {
+  margin-bottom: 0;
+}
+
+.content_user a,
+span {
+  color: hsl(206, 100%, 40%) !important;
+  transition: all 0.1s ease-in-out;
+}
+
+.content_user a:hover,
+span:hover {
+  color: #5995ff !important;
+}
