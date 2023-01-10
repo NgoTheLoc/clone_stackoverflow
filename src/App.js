@@ -8,6 +8,7 @@ import Signup from "./components/Auth/Signup";
 import Questions from "./pages/Questions";
 import AskQuestion from "./pages/Questions/AskQuestion";
 import DetailQuestion from "./pages/Questions/DetailQuestion";
+
 import { login, logout } from "./redux/features/user/userSlice";
 import { auth } from "./services/firebase";
 
@@ -32,7 +33,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <BrowserRouter> 
+    <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Navigate to="/question" />} />
         <Route exact path="/question" element={<Questions />}>

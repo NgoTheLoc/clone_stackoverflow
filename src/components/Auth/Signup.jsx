@@ -4,25 +4,33 @@ import { ToastContainer } from "react-toastify";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../../services/firebase";
-import { error, success } from "../../model/notify";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {
+  auth,
+  provider,
+  providerFacebook,
+  providerGithub,
+} from "../../services/firebase";
+
+import { error } from "../../model/notify";
+
+import { useDispatch } from "react-redux";
+import { checkLogin, login } from "../../redux/features/user/userSlice";
 
 import Header from "../Header";
-import { useSelector } from "react-redux";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const user = useSelector((state) => state.value);
+  const dispatch = useDispatch();
 
   const [initialValue, setInitialValue] = useState({
-    username: "",
+    displayName: "",
     email: "",
     password: "",
   });
 
   const validationSchema = Yup.object().shape({
-    username: Yup.string()
+    displayName: Yup.string()
       .min(2, "Too Short!")
       .max(15, "Too Long!")
       .required("Required"),
@@ -31,35 +39,49 @@ const Signup = () => {
   });
 
   /* Log-in with Google, Facebook, Github */
-  const handleLogInGoogle = () => {
-    signInWithPopup(auth, provider).then((res) => {
-      console.log(res);
-    });
+  const handleSignUpGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        console.log(res);
+        navigate("/question");
+      })
+      .catch((error) => {
+        error(`Sign-up failed: ${error}`);
+      });
   };
 
-  const handleLogInGithub = () => {
-    signInWithPopup(auth, provider).then((res) => {
-      console.log(res);
-    });
+  const handleSignUpGithub = () => {
+    signInWithPopup(auth, providerGithub)
+      .then((res) => {
+        console.log(res);
+        navigate("/question");
+      })
+      .catch((error) => {
+        error(`Sign-up failed: ${error}`);
+      });
   };
 
-  const handleLogInFacebook = () => {
-    signInWithPopup(auth, provider).then((res) => {
-      console.log(res);
-    });
+  const handleSignUpFacebook = () => {
+    signInWithPopup(auth, providerFacebook)
+      .then((res) => {
+        console.log(res);
+        navigate("/question");
+      })
+      .catch((error) => {
+        error(`Sign-up failed: ${error}`);
+      });
   };
 
   const handleSubmit = (values) => {
     if (values) {
-      signInWithEmailAndPassword(auth, values.email, values.password)
+      createUserWithEmailAndPassword(auth, values.email, values.password)
         .then((res) => {
-          console.log(res);
+          console.log("🚀 res", res);
+          dispatch(checkLogin(false));
           navigate("/log-in");
-          success("Sign-up successfully");
         })
         .catch((err) => {
-          error("Sign-up failed");
-          console.log(err);
+          error(`Sign-up failed: ${err}`);
         });
     } else {
     }
@@ -87,7 +109,7 @@ const Signup = () => {
           </Link>
 
           <div className="auth_options">
-            <div className="single_option" onClick={handleLogInGoogle}>
+            <div className="single_option" onClick={handleSignUpGoogle}>
               <svg
                 aria-hidden="true"
                 className="native svg-icon iconGoogle"
@@ -114,7 +136,7 @@ const Signup = () => {
               </svg>
               Log in with Google
             </div>
-            <div className="single_option" onClick={handleLogInGithub}>
+            <div className="single_option" onClick={handleSignUpGithub}>
               <svg
                 aria-hidden="true"
                 className="svg-icon iconGitHub"
@@ -129,7 +151,7 @@ const Signup = () => {
               </svg>
               Log in with GitHub
             </div>
-            <div className="single_option" onClick={handleLogInFacebook}>
+            <div className="single_option" onClick={handleSignUpFacebook}>
               <svg
                 aria-hidden="true"
                 className="svg-icon iconFacebook"
@@ -159,17 +181,19 @@ const Signup = () => {
                 {({ values, errors, handleChange, handleBlur }) => (
                   <Form>
                     <div className="input_field">
-                      <label htmlFor="username">Display name</label>
+                      <label htmlFor="displayName">Display name</label>
                       <input
                         type="text"
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        value={values.username}
-                        name="username"
-                        id="username"
+                        value={values.displayName}
+                        name="displayName"
+                        id="displayName"
                       />
-                      {errors.username && (
-                        <div className="error_message">{errors.username}</div>
+                      {errors.displayName && (
+                        <div className="error_message">
+                          {errors.displayName}
+                        </div>
                       )}
                     </div>
 
