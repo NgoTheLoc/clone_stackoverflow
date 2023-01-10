@@ -16,7 +16,7 @@ function Router() {
   const isLogin = useSelector((state) => state.user.isLogin);
 
   let routes = useRoutes([
-    { path: "", element: <Navigate to="/question" /> },
+    { path: "", element: <Home /> },
     {
       path: "question",
       element: <Questions />,
@@ -31,8 +31,15 @@ function Router() {
     { path: "tags", element: <Tags /> },
     { path: "users", element: <Users /> },
     { path: "companies", element: <Companies /> },
-    { path: "log-in", element: isLogin ? <Questions /> : <Login /> },
-    { path: "sign-up", element: isLogin ? <Questions /> : <Signup /> },
+    {
+      path: "log-in",
+      element: isLogin ? <Home /> : <Login />,
+    },
+    {
+      path: "sign-up",
+      element: isLogin ? <Home /> : <Signup />,
+    },
+    // {path: "*",element: <NotFound />},
   ]);
 
   return routes;

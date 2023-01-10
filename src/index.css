@@ -16,6 +16,9 @@
 /* Module CSS Users */
 @import "./assets/css/pages/Users/user.module.css";
 
+/* Module CSS Home */
+@import "./assets/css/pages/Home/home.module.css";
+
 * {
   padding: 0;
   margin: 0;
