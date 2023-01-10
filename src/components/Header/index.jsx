@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import SearchIcon from "@mui/icons-material/Search";
 import InboxIcon from "@mui/icons-material/Inbox";
@@ -8,12 +9,13 @@ import AcUnitIcon from "@mui/icons-material/AcUnit";
 import HelpIcon from "@mui/icons-material/Help";
 import ViewAgendaIcon from "@mui/icons-material/ViewAgenda";
 import { Avatar } from "@mui/material";
-import { useSelector } from "react-redux";
-import { signOut } from "firebase/auth";
+
+import { auth } from "../../services/firebase";
 
 const Header = () => {
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user.user);
+  const isLogin = useSelector((state) => state.user.isLogin);
 
   return (
     <header>
@@ -36,15 +38,15 @@ const Header = () => {
         </div>
         <div className="header_right">
           <div className="header_right_container">
-            {user.value ? (
+            {user && isLogin ? (
               <>
                 <span
                   onClick={() => {
-                    signOut();
+                    auth.signOut();
                     navigate("/log-in");
                   }}
                 >
-                  <Avatar alt={user.value.photo} src={user.value.photo} />
+                  <Avatar alt={user.displayName} src={user.photo} />
                 </span>
                 <InboxIcon />
                 <EmojiEventsIcon />

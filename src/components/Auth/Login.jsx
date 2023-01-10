@@ -5,16 +5,23 @@ import { ToastContainer } from "react-toastify";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 
-import Header from "../Header";
-
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { error, success } from "../../model/notify";
-import { auth, provider } from "../../services/firebase";
-import { useSelector } from "react-redux";
+import {
+  auth,
+  provider,
+  providerFacebook,
+  providerGithub,
+} from "../../services/firebase";
+
+import { error } from "../../model/notify";
+
+import Header from "../Header";
+import { useDispatch } from "react-redux";
+import { checkLogin } from "../../redux/features/user/userSlice";
 
 const Login = () => {
   const navigate = useNavigate();
-  const user = useSelector((state) => state.value);
+  const dispatch = useDispatch();
 
   const [initialValue, setInitialValue] = useState({
     email: "",
@@ -28,22 +35,36 @@ const Login = () => {
 
   /* Log-in with Google, Facebook, Github */
   const handleLogInGoogle = () => {
-    signInWithPopup(auth, provider).then((res) => {
-      console.log(res);
-      navigate("/question");
-    });
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        console.log(res);
+        navigate("/question");
+      })
+      .catch((error) => {
+        error(`Sign-up failed: ${error}`);
+      });
   };
 
   const handleLogInGithub = () => {
-    signInWithPopup(auth, provider).then((res) => {
-      console.log(res);
-    });
+    signInWithPopup(auth, providerGithub)
+      .then((res) => {
+        console.log(res);
+        navigate("/question");
+      })
+      .catch((error) => {
+        error(`Sign-up failed: ${error}`);
+      });
   };
 
   const handleLogInFacebook = () => {
-    signInWithPopup(auth, provider).then((res) => {
-      console.log(res);
-    });
+    signInWithPopup(auth, providerFacebook)
+      .then((res) => {
+        console.log(res);
+        navigate("/question");
+      })
+      .catch((error) => {
+        error(`Sign-up failed: ${error}`);
+      });
   };
 
   const handleSubmit = (values) => {
@@ -51,12 +72,11 @@ const Login = () => {
       signInWithEmailAndPassword(auth, values.email, values.password)
         .then((res) => {
           console.log(res);
+          dispatch(checkLogin(true));
           navigate("/question");
-          success("Login successfully");
         })
         .catch((err) => {
-          console.log(err);
-          error("Login failed");
+          error(`Log-in failed: ${err}`);
         });
     } else {
     }
