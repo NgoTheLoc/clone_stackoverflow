@@ -28,7 +28,7 @@ const Header = () => {
             />
           </Link>
 
-          <Link to="/">Products</Link>
+          <Link to="/question">Products</Link>
         </div>
         <div className="header_middle">
           <div className="header_search_container">
